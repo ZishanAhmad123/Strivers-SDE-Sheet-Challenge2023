@@ -1,0 +1,26 @@
+Node *findMiddle(Node *head) {
+    // empty list or list with one node
+    if(head==NULL || head->next==NULL){
+        return head;
+    }
+    // list with 2 nodes
+    if(head->next->next==NULL){
+        return head->next;
+    }
+    // all other cases use the algo
+    Node *slow=head;
+    Node *fast=head->next;
+
+    while(fast!=NULL){
+        // first move fast pointer by one place
+        fast=fast->next;
+        // if fast not equal to null- move by one more place
+        if(fast!=NULL){
+            fast=fast->next;
+        }
+        // move slow by one place always
+        slow=slow->next;
+    }
+    // when fast is at end of LL, slow is at mid=> return slow
+    return slow;
+}
